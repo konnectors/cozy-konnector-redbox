@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "name": "SFR RED box",
+  "type": "node",
+  "slug": "redbox",
+  "source": "git://github.com/cozy/cozy-konnector-redbox.git",
+  "fields": {
+    "save_folder": {
+      "doctype": "io.cozy.files",
+      "type": "folder"
+    },
+    "account": {
+      "doctype": "io.cozy.accounts",
+      "account_type": "redbox",
+      "accountFormat": "login,password"
+    }
+  },
+  "locales": {
+    "fr": {
+      "description": "Récupère toutes vos factures SFR RED",
+      "permissions": {
+        "bills": {
+          "description": "Utilisé pour sauvegarder les données de facturation"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        }
+      }
+    },
+    "en": {
+      "description": "Retrieves all your SFR RED invoices",
+      "permissions": {
+        "bills": {
+          "description": "Used to save billing data"
+        },
+        "files": {
+          "description": "Used to save invoices"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "bank operations": {
+      "description": "Required to link bills to bank operations",
+      "type": "io.cozy.bank.operations"
+    },
+    "bills": {
+      "description": "Required to save the bills data",
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "description": "Required to save the bills",
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "description": "Required to get the account's data",
+      "type": "io.cozy.accounts",
+      "verbs": ["GET"]
+    }
+  },
+  "developer": {
+    "name": "doubleface",
+    "url": "https://github.com/doubleface"
+  }
+}
