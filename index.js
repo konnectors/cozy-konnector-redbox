@@ -83,15 +83,20 @@ function fetchBillsAttempts () {
 
 function fetchBillingInfo () {
   log('info', 'Fetching bill info')
-  return rq('https://espace-client-red.sfr.fr/facture-fixe/consultation')
-  .then($ => {
-    if ($('input[name^=TS01]').length > 0) {
-      // this is the case where the user identified himself with sfr login
-      log('error', 'This is sfr identifier, should use red box identifiers')
+  return rq({
+    url: 'https://espace-client-red.sfr.fr/facture-fixe/consultation',
+    resolveWithFullResponse: true,
+    maxRedirects: 5 // avoids infinite redirection to facture-mobile if any
+  })
+  .then(response => {
+    // check that the page was not redirected to another sfr service
+    if (response.request.uri.path !== '/facture-fixe/consultation' || response.request.uri.hostname !== 'espace-client-red.sfr.fr') {
+      // this is the case where the user identified himself with other sfr login
+      log('error', 'This is not red box identifier')
       throw new Error('LOGIN_FAILED')
     }
 
-    return $
+    return response.body
   })
 }
 
@@ -114,7 +119,7 @@ function parsePage ($) {
       amount: parseFloat(price),
       fileurl: `${baseURL}${firstBillUrl}`,
       filename: getFileName(firstBillDate),
-      vendor: 'SFR RED'
+      vendor: 'SFR RED BOX'
     }
 
     result.push(bill)
@@ -145,7 +150,7 @@ function parsePage ($) {
         amount: parseFloat(price),
         fileurl: `${baseURL}${fileurl}`,
         filename: getFileName(date),
-        vendor: 'SFR RED'
+        vendor: 'SFR RED BOX'
       }
       return bill
     } else return null
