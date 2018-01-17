@@ -12,7 +12,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
-    "cozy-konnector-libs": "3.1.5",
+    "cozy-konnector-libs": "3.1.6",
     "moment": "^2.18.1"
   },
   "scripts": {
