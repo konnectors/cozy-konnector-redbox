@@ -10,10 +10,10 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "cheerio": "^1.0.0-rc.2",
-    "cozy-konnector-libs": "^3.0.2",
-    "moment": "^2.18.1"
+    "bluebird": "3.5.1",
+    "cheerio": "1.0.0-rc.2",
+    "cozy-konnector-libs": "3.2.5",
+    "moment": "2.20.1"
   },
   "scripts": {
     "start": "node index.js",
@@ -26,8 +26,8 @@
     "deploy:travis": "git-directory-deploy --username Cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-redbox.git"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.0.1",
-    "git-directory-deploy": "^1.5.1",
-    "webpack": "^3.4.1"
+    "copy-webpack-plugin": "4.3.1",
+    "git-directory-deploy": "1.5.1",
+    "webpack": "3.10.0"
   }
 }
