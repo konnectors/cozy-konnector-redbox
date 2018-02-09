@@ -39,7 +39,7 @@ module.exports = new BaseKonnector(function fetch (fields) {
 // Procedure to get the login token
 function getToken () {
   log('info', 'Logging in on Sfr RED Website...')
-  return rq('https://www.sfr.fr/bounce?target=//www.sfr.fr/sfr-et-moi/bounce.html&casforcetheme=mire-sfr-et-moi&mire_layer')
+  return rq('https://www.sfr.fr/cas/login?service=https://www.red-by-sfr.fr/accueil/j_spring_cas_security_check&theme=espaceclientred#redclicid=X_Menu_EspaceClient')
   .then($ => $('input[name=lt]').val())
   .then(token => {
     log('debug', token, 'TOKEN')
@@ -51,7 +51,7 @@ function getToken () {
 function logIn (token, fields) {
   return rq({
     method: 'POST',
-    url: 'https://www.sfr.fr/cas/login?domain=mire-sfr-et-moi&service=https://www.sfr.fr/accueil/j_spring_cas_security_check#sfrclicid=EC_mire_Me-Connecter',
+    url: 'https://www.sfr.fr/cas/login?domain=espaceclientred&service=https://www.red-by-sfr.fr/accueil/j_spring_cas_security_check#sfrclicid=EC_mire_Me-Connecter',
     form: {
       lt: token,
       execution: 'e1s1',
