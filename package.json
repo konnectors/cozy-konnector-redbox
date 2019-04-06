@@ -10,8 +10,8 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
-    "bluebird": "3.5.4",
-    "cheerio": "1.0.0-rc.2",
+    "bluebird": "3.5.1",
+    "cheerio": "1.0.0-rc.3",
     "cozy-konnector-libs": "3.2.5",
     "moment": "2.20.1"
   },
